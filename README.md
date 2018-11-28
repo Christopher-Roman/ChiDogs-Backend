@@ -50,43 +50,43 @@ ChiDogs is a social network for people and their dogs. It is a community for peo
 
 Client Login and Registration Pages:
 
-[Imgur](https://i.imgur.com/di1VLQ6.png)
+![Imgur](https://i.imgur.com/vfP7lw4.png)
 
 Client Index Page:
 
-[Imgur](https://i.imgur.com/hUlbSIP.png)
+![Imgur](https://i.imgur.com/He93GLA.png)
 
 Client Profile Information Edit Page:
 
-[Imgur](https://i.imgur.com/BtYXJvb.png)
+![Imgur](https://i.imgur.com/bDHYjiN.png)
 
 Client Upload Photo Modal:
 
-[Imgur](https://i.imgur.com/rmWRSyk.png)
+![Imgur](https://i.imgur.com/NhRbh7Z.png)
 
 Client Replying to another Client's Post:
 
-[Imgur](https://i.imgur.com/lT8nHOD.png)
+![Imgur](https://i.imgur.com/sQRRwyM.png)
 
 Client Looking at another Client's Profile:
 
-[Imgur](https://i.imgur.com/orl5zBC.png)
+![Imgur](https://i.imgur.com/EB9X9UR.png)
 
 Client Friend Search Modal:
 
-[Imgur](https://i.imgur.com/dfLsxIl.png)
+![Imgur](https://i.imgur.com/w27Bgjb.png)
 
 Client Viewing another Client's Photos Modal:
 
-[Imgur](https://i.imgur.com/kOitw6Y.png)
+![Imgur](https://i.imgur.com/ZItRXRi.png)
 
 Client Viewing another Client's Friends Modal:
 
-[Imgur](https://i.imgur.com/qehSj3q.png)
+![Imgur](https://i.imgur.com/pEmEEeX.png)
 
 Client Deleting Account Modal:
 
-[Imgur](https://i.imgur.com/OxYGTx2.png)
+![Imgur](https://i.imgur.com/yTmJR8p.png)
 
 
 
