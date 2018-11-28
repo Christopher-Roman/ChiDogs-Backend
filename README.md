@@ -74,7 +74,7 @@ Client Looking at another Client's Profile:
 
 Client Friend Search Modal:
 
-![Imgur](https://i.imgur.com/w27Bgjb.png)
+![Imgur](https://i.imgur.com/HYhBzHV.png)
 
 Client Viewing another Client's Photos Modal:
 
