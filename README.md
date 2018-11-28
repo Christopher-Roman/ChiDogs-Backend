@@ -66,7 +66,7 @@ Client Upload Photo Modal:
 
 Client Replying to another Client's Post:
 
-![Imgur](https://i.imgur.com/sQRRwyM.png)
+![Imgur](https://i.imgur.com/MMwUcyX.png)
 
 Client Looking at another Client's Profile:
 
