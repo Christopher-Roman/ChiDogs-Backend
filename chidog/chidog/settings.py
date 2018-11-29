@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
+from secrets import KEY, HOST
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,12 +20,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y_zar7a9r*x%r%%7p-(7i-^ip(5dcsizv*lp6rc0j6t62e7ebw'
+SECRET_KEY = KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    HOST,
+)
 
 
 # Application definition
@@ -37,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chidog_backend',
+    'chidog_api',
+    'accounts_api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +83,11 @@ WSGI_APPLICATION = 'chidog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'chidog',
+        'USER': 'topher',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost'
     }
 }
 
