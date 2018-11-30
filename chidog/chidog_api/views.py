@@ -11,10 +11,6 @@ import json
 # Pet Views and Routes for the pets that users can add to their profile.
 
 class Pets(View):
-	# @method_decorator(csrf_exempt)
-
-	# def dispatch(self, request, *args, **kwargs):
-	# 	return super(Pets, self).dispatch(request, *args, **kwargs)
 	# Pet Get Route
 	def get(self, request):
 		if(request.user.is_authenticated):
@@ -33,7 +29,7 @@ class Pets(View):
 		data = request.body.decode('utf-8')
 		data = json.loads(data)
 		try:
-			new_pet = Pet(first_name=data['first_name'], middle_name=data['middle_name'], last_name=data[last_name], age=data['age'], breed=data['breed'])
+			new_pet = Pet(first_name=data['first_name'], middle_name=data['middle_name'], last_name=data['last_name'], age=data['age'], breed=data['breed'])
 			new_pet.owner = request.user
 			new_pet.save()
 			data['id'] = new_pet.id
