@@ -74,7 +74,7 @@ class Pet_Detail(View):
 	# Pet Delete Route
 	def delete(self, request, pk):
 		try:
-			pet_to_delete = Pet.object.get(pk=pk)
+			pet_to_delete = Pet.objects.get(pk=pk)
 			pet_to_delete.delete()
 			return JsonResponse({'data': 'Removal was successful.'}, safe=False)
 		except:
