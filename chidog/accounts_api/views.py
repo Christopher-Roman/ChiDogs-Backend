@@ -10,7 +10,7 @@ import json
 
 # Create your models here.
 
-# @ensure_csrf_cookie
+@ensure_csrf_cookie
 def getToken(request):
 	return JsonResponse({'data': 'Token received'}, safe=False)
 
@@ -21,16 +21,11 @@ def logout(request):
 
 class Create_User(View):
 
-	@method_decorator(csrf_exempt)
-
-	def dispatch(self, request, *args, **kwargs):
-		return super(Create_User, self).dispatch(request, *args, **kwargs)
-
 	def post(self, request):
 		data = request.body.decode('utf-8')
 		data = json.loads(data)
 		try:
-			new_user = User(username=data['username'], password=data['password'], email=data['email'])
+			new_user = User(username=data['username'], email=data['email'], password=data['password'])
 			new_user.set_password(new_user.password)
 			new_user.save()
 			auth.login(request, new_user)
@@ -39,10 +34,10 @@ class Create_User(View):
 			return JsonResponse({'data': 'Registration Failed. I blame you...'}, safe=False)
 
 class Authentication(View):
-	@method_decorator(csrf_exempt)
+	# @method_decorator(csrf_exempt)
 
-	def dispatch(self, request, *args, **kwargs):
-		return super(Create_User, self).dispatch(request, *args, **kwargs)
+	# def dispatch(self, request, *args, **kwargs):
+	# 	return super(Create_User, self).dispatch(request, *args, **kwargs)
 		
 	def post(self, request):
 		data = request.body.decode('utf-8')

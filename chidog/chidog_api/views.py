@@ -1,4 +1,6 @@
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from .models import Pet, Post, Photo, Reply
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -9,7 +11,10 @@ import json
 # Pet Views and Routes for the pets that users can add to their profile.
 
 class Pets(View):
+	# @method_decorator(csrf_exempt)
 
+	# def dispatch(self, request, *args, **kwargs):
+	# 	return super(Pets, self).dispatch(request, *args, **kwargs)
 	# Pet Get Route
 	def get(self, request):
 		if(request.user.is_authenticated):
