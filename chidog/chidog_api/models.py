@@ -25,11 +25,7 @@ class Post(models.Model):
 		return self.created_by.username + ' | ' + self.post_body
 
 class Photo(models.Model):
-	profile_pic = models.BooleanField(default=False)
-	post_pic = models.BooleanField(default=False)
-	upload_pic = models.BooleanField(default=True)
 	picture_url = models.CharField(max_length=255)
-	posted_pic = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='pictures', default=None)
 	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pictures', default=None)
 
 	def __str__(self):

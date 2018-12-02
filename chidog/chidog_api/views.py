@@ -139,7 +139,7 @@ class Post_Detail(View):
 	# Post Delete Route
 	def delete(self, request, pk):
 		try:
-			post_to_delete = Post.object.get(pk=pk)
+			post_to_delete = Post.objects.get(pk=pk)
 			post_to_delete.delete()
 			return JsonResponse({'data': 'Delete successful'})
 		except:
