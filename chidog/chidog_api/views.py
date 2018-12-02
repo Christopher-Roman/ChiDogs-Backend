@@ -1,5 +1,4 @@
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .models import Pet, Post, Photo, Reply
 from django.contrib.auth.models import User
@@ -48,6 +47,7 @@ class Pet_Detail(View):
 	def put(self, request, pk):
 		data = request.body.decode('utf-8')
 		data = json.loads(data)
+
 		try:
 			edit_pet = Pet.objects.get(pk=pk)
 			data_key = list(data.keys())
@@ -63,9 +63,10 @@ class Pet_Detail(View):
 					edit_pet.age = data[key]
 				if key == 'breed':
 					edit_pet.breed = data[key]
-				edit_pet.save()
-				data['id'] = edit_pet.id
-				return JsonResponse({'data': data}, safe=False)
+				
+			edit_pet.save()
+			data['id'] = edit_pet.id
+			return JsonResponse({'data': data}, safe=False)
 		except Pet.DoesNotExist:
 			return JsonResponse({'error': 'Pet does not exist.'})
 		except:
@@ -87,8 +88,8 @@ class Posts(View):
 	# Posts Get Route
 	def get(self, request):
 		if(request.user.is_authenticated):
-			user = User.object.get(id=request.user.id)
-			post_list = list(user.post.all().values())
+			user = User.objects.get(id=request.user.id)
+			post_list = list(user.posts.all().values())
 		return JsonResponse({
 			'Content-Type': 'application/json',
 			'credentials': 'include',
@@ -96,19 +97,18 @@ class Posts(View):
 			'data': post_list
 			}, safe=False)
 
-		# Posts Post Route
-		def post(self, request):
-			data = request.body.decode('utf-8')
-			data = json.loads(data)
-
-			try:
-				new_post = Post(post_body=data['post_body'])
-				new_post.created_by = request.user
-				new_post.save()
-				data['id'] = new_post.id
-				return JsonResponse({'data': data}, safe=False)
-			except:
-				return JsonResponse({'error': 'Data not valid'}, safe=False)
+	# Posts Post Route
+	def post(self, request):
+		data = request.body.decode('utf-8')
+		data = json.loads(data)
+		try:
+			new_post = Post(post_body=data['post_body'])
+			new_post.created_by = request.user
+			new_post.save()
+			data['id'] = new_post.id
+			return JsonResponse({'data': data}, safe=False)
+		except:
+			return JsonResponse({'error', 'Data not valid.'}, safe=False)
 
 class Post_Detail(View):
 
