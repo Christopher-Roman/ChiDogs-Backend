@@ -26,7 +26,7 @@ class Post(models.Model):
 
 class Photo(models.Model):
 	picture_url = models.CharField(max_length=255)
-	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pictures', default=None)
+	created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='photos', default=None)
 
 	def __str__(self):
 		return self.picture_url

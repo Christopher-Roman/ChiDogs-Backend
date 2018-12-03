@@ -211,3 +211,41 @@ class Reply_Detail(View):
 		except:
 			return JsonResponse({'data': 'Something went wrong.'})
 
+class Photos(View):
+	def get(self, request):
+		if(request.user.is_authenticated):
+			user = User.objects.get(id=request.user.id)
+			photo_list = list(user.photos.all().values())
+		return JsonResponse({
+			'Content-Type': 'application/json',
+			'credentials': 'include',
+			'status': 200,
+			'data': photo_list
+			}, safe=False)
+
+	def post(self, request):
+		data = request.body.decode('utf-8')
+		data = json.loads(data)
+
+		try:
+			new_photo = Photo(picture_url=data['picture_url'])
+			new_photo.created_by = request.user
+			new_photo.save()
+			data['id'] = new_photo.id
+			return JsonResponse({'data': data}, safe=False)
+		except:
+			return JsonResponse({'error': 'Data not valid'}, safe=False)
+
+class Photo_Detail(View):
+	def get(self, request, pk):
+		photo_list = list(Photo.objects.filter(pk=pk).values)
+		return JsonResponse({'data': movie_list}, safe=False)
+
+	def delete(self, request, pk):
+		try:
+			photo_to_delete = Photo.objects.get(pk=pk)
+			photo_to_delete.delete()
+			return JsonResponse({'data': 'Delete Successful'}, safe=False)
+		except:
+			return JsonResponse({'data': 'Something went wrong'})
+
