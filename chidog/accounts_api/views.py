@@ -51,10 +51,10 @@ class Authentication(View):
 
 class User_Detail(View):
 	def get(self, request):
-		user = list(User.object.filter(pk=pk).values())
-		user_pet = list(Pet.object.filter(created_by_id=pk).values())
-		user_post = list(Post.object.filter(created_by_id=pk).values())
-		user_photo = list(Photo.object.filter(created_by_id=pk).values())
+		user = list(User.objects.filter(pk=pk).values())
+		user_pet = list(Pet.objects.filter(created_by_id=pk).values())
+		user_post = list(Post.objects.filter(created_by_id=pk).values())
+		user_photo = list(Photo.objects.filter(created_by_id=pk).values())
 		return JsonResponse({'data': {'user': user, 'pet': user_pet, 'post': user_post, 'photo': user_photo}}, safe=False)
 
 

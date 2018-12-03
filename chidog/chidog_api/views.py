@@ -40,7 +40,7 @@ class Pet_Detail(View):
 
 	# Pet Detail view Get Route
 	def get(self, request, pk):
-		pet_list = list(Pet.object.filter(pk=pk).values)
+		pet_list = list(Pet.objects.filter(pk=pk).values)
 		return JsonResponse({'data': pet_list}, safe=False)
 
 	# Pet Detail View Edit Route
