@@ -31,7 +31,7 @@ class Create_User(View):
 			auth.login(request, new_user)
 			return JsonResponse({'data': 'Registration Successful'}, safe=False)
 		except: 
-			return JsonResponse({'data': 'Registration Failed. I blame you...'}, safe=False)
+			return JsonResponse({'data': 'Registration Failed.'}, safe=False)
 
 class Authentication(View):
 	# @method_decorator(csrf_exempt)
@@ -50,7 +50,7 @@ class Authentication(View):
 			return JsonResponse({'data': 'Login failed. Try again.'}, safe=False)
 
 class User_Detail(View):
-	def get(self, request):
+	def get(self, request, pk):
 		user = list(User.objects.filter(pk=pk).values())
 		user_pet = list(Pet.objects.filter(created_by_id=pk).values())
 		user_post = list(Post.objects.filter(created_by_id=pk).values())

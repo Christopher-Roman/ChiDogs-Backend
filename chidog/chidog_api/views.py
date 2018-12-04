@@ -22,13 +22,20 @@ class Pets(View):
 				'status': 200,
 				'data': pet_list,
 				}, safe=False)
+		else:
+			return JsonResponse({
+				'Content-Type': 'application/json',
+				'credentials': 'include',
+				'status': 200,
+				'message': 'Must be logged in.',
+				}, safe=False)
 
 	# Pet Post Route
 	def post(self, request):
 		data = request.body.decode('utf-8')
 		data = json.loads(data)
 		try:
-			new_pet = Pet(first_name=data['first_name'], middle_name=data['middle_name'], last_name=data['last_name'], age=data['age'], breed=data['breed'])
+			new_pet = Pet(first_name=data['first_name'], middle_name=data['middle_name'], last_name=data['last_name'], pet_photo=data['pet_photo'], age=data['age'], breed=data['breed'], weight=data['weight'], likes_people=data['likes_people'], likes_dogs=data['likes_dogs'], loves_to=data['loves_to'], fav_treat=data['fav_treat'], vet_name=data['vet_name'], vet_phone=data['vet_phone'], vet_address=data['vet_address'], fixed=data['fixed'])
 			new_pet.owner = request.user
 			new_pet.save()
 			data['id'] = new_pet.id
@@ -59,11 +66,30 @@ class Pet_Detail(View):
 					edit_pet.middle_name = data[key]
 				if key == 'last_name':
 					edit_pet.last_name = data[key]
+				if key == 'pet_photo':
+					edit_pet.pet_photo = data[key]
 				if key == 'age':
 					edit_pet.age = data[key]
 				if key == 'breed':
 					edit_pet.breed = data[key]
-				
+				if key == 'weight':
+					edit_pet.weight = data[key]
+				if key == 'likes_people':
+					edit_pet.likes_people = data[key]
+				if key == 'likes_dogs':
+					edit_pet.likes_dogs = data[key]
+				if key == 'loves_to':
+					edit_pet.loves_to = data[key]
+				if key == 'fav_treat':
+					edit_pet.fav_treat = data[key]
+				if key == 'vet_name':
+					edit_pet.vet_name = data[key]
+				if key == 'vet_phone':
+					edit_pet.vet_phone = data[key]
+				if key == 'vet_address':
+					edit_pet.vet_address = data[key]
+				if key == 'fixed':
+					edit_pet.fixed = data[key]
 			edit_pet.save()
 			data['id'] = edit_pet.id
 			return JsonResponse({'data': data}, safe=False)
@@ -90,12 +116,19 @@ class Posts(View):
 		if(request.user.is_authenticated):
 			user = User.objects.get(id=request.user.id)
 			post_list = list(user.posts.all().values())
-		return JsonResponse({
-			'Content-Type': 'application/json',
-			'credentials': 'include',
-			'status': 200,
-			'data': post_list
-			}, safe=False)
+			return JsonResponse({
+				'Content-Type': 'application/json',
+				'credentials': 'include',
+				'status': 200,
+				'data': post_list
+				}, safe=False)
+		else:
+			return JsonResponse({
+				'Content-Type': 'application/json',
+				'credentials': 'include',
+				'status': 200,
+				'message': 'Must be logged in.',
+				}, safe=False)
 
 	# Posts Post Route
 	def post(self, request):

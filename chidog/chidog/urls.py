@@ -21,5 +21,6 @@ urlpatterns = [
     path('profile/', include('chidog_api.urls')),
     path('profile/pets/', include('chidog_api.urls')),
     path('profile/photos/', include('chidog_api.urls')),
-    path('users/', include('accounts_api.urls'))
+    path('users/', include('accounts_api.urls')),
+    path('profile/', include('accounts_api.urls'))
 ]

@@ -8,8 +8,18 @@ class Pet(models.Model):
 	first_name = models.CharField(max_length=100)
 	middle_name = models.CharField(max_length=100)
 	last_name = models.CharField(max_length=100)
+	pet_photo = models.CharField(max_length=255, default='')
 	age = models.IntegerField(default=0)
 	breed = models.CharField(max_length=100)
+	weight = models.IntegerField(default=1)
+	likes_people = models.CharField(max_length=100, default=0)
+	likes_dogs = models.CharField(max_length=100, default=0)
+	loves_to = models.CharField(max_length=100, default=0)
+	fav_treat = models.CharField(max_length=100, default=0)
+	vet_name = models.CharField(max_length=100, default=0)
+	vet_phone = models.CharField(max_length=100, default=0)
+	vet_address = models.TextField(default=0)
+	fixed = models.CharField(max_length=100, default=0)
 	owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pets', default=None)
 
 	def __str__(self):
