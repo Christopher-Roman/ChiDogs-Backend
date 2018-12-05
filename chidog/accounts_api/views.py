@@ -34,24 +34,21 @@ class Create_User(View):
 			return JsonResponse({'data': 'Registration Failed.'}, safe=False)
 
 class Authentication(View):
-	# @method_decorator(csrf_exempt)
-
-	# def dispatch(self, request, *args, **kwargs):
-	# 	return super(Create_User, self).dispatch(request, *args, **kwargs)
-		
+	
 	def post(self, request):
 		data = request.body.decode('utf-8')
 		data = json.loads(data)
 		user = auth.authenticate(username=data['username'], password=data['password'])
 		if user is not None:
 			auth.login(request, user)
+			print(request)
 			return JsonResponse({'data': 'Login Successful'}, safe=False)
 		else:
 			return JsonResponse({'data': 'Login failed. Try again.'}, safe=False)
 
 class User_Detail(View):
-	def get(self, request, pk):
-		user = list(User.objects.filter(pk=pk).values())
+	def get(self, request, username):
+		user = list(User.objects.filter(usernmae=username).values())
 		user_pet = list(Pet.objects.filter(created_by_id=pk).values())
 		user_post = list(Post.objects.filter(created_by_id=pk).values())
 		user_photo = list(Photo.objects.filter(created_by_id=pk).values())

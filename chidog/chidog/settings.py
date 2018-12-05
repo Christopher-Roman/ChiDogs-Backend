@@ -1,3 +1,4 @@
+from .secrets import KEY, HOST
 """
 Django settings for chidog project.
 
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y_zar7a9r*x%r%%7p-(7i-^ip(5dcsizv*lp6rc0j6t62e7ebw'
+SECRET_KEY = KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,7 +30,7 @@ ALLOWED_HOSTS = []
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
+    HOST,
 )
 
 

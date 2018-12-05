@@ -184,7 +184,7 @@ class Post_Detail(View):
 class Replies(View):
 
 	# Reply Get Route
-	def get(self, request):
+	def get(self, request, id):
 		if(request.user.is_authenticated):
 			user = User.objects.get(id=request.user.id)
 			reply_list = list(user.replies.all().values())
