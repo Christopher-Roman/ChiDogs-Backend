@@ -47,12 +47,14 @@ class Authentication(View):
 			return JsonResponse({'data': 'Login failed. Try again.'}, safe=False)
 
 class User_Detail(View):
-	def get(self, request, username):
-		user = list(User.objects.filter(usernmae=username).values())
-		user_pet = list(Pet.objects.filter(created_by_id=pk).values())
-		user_post = list(Post.objects.filter(created_by_id=pk).values())
-		user_photo = list(Photo.objects.filter(created_by_id=pk).values())
-		return JsonResponse({'data': {'user': user, 'pet': user_pet, 'post': user_post, 'photo': user_photo}}, safe=False)
+	def get(self, request):
+		usersPets = list(Pet.objects.all().values())
+		return JsonResponse({
+				'Content-Type': 'application/json',
+				'credentials': 'include',
+				'status': 200,
+				'data': usersPets,
+				}, safe=False)
 
 
 
