@@ -1,5 +1,4 @@
 import django_heroku
-from .secrets import KEY, HOST
 """
 Django settings for chidog project.
 
@@ -13,6 +12,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 import os
 
+if(os.environ['DEPLOYED_APP'] == no):
+    from .secrets import KEY, HOST
+else:
+    KEY = os.environ['KEY']
+    HOST = os.environ['HOST']
+    
 # from secrets import KEY, HOST
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
