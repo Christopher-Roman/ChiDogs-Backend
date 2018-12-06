@@ -16,8 +16,8 @@ import os
 if(os.environ['DEPLOYED_APP'] == 'no'):
     from .secrets import SECRET_KEY, LOCAL_HOST
 else:
-    KEY = os.environ['SECRET_KEY']
-    HOST = os.environ['LOCAL_HOST']
+    SECRET_KEY = os.environ['SECRET_KEY']
+    LOCAL_HOST = os.environ['LOCAL_HOST']
 
 # from secrets import KEY, HOST
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
