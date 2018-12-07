@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ['https://chidog.herokuapp.com']
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    LOCAL_HOST
+    LOCAL_HOST, 'https://chidog.herokuapp.com'
 )
 
 
