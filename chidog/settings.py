@@ -31,13 +31,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://chidog.herokuapp.com']
+ALLOWED_HOSTS = ['https://chidog.herokuapp.com/register']
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    LOCAL_HOST, 'https://chidog.herokuapp.com'
+    LOCAL_HOST,
 )
 
 
