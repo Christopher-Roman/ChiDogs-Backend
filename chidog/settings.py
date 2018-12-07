@@ -33,11 +33,11 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://chidog.herokuapp.com/register']
+ALLOWED_HOSTS = ['https://chidog.herokuapp.com']
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    LOCAL_HOST,
+    LOCAL_HOST
 )
 
 
