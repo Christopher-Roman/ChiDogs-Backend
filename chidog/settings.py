@@ -14,10 +14,16 @@ import os
 # from .secrets import KEY, HOST
 
 if(os.environ['DEPLOYED_APP'] == 'no'):
-    from .secrets import SECRET_KEY, LOCAL_HOST
+    from .secrets import SECRET_KEY, LOCAL_HOST, REGISTER, PROFILE, PETS, PHOTOS, USERS, LOGIN
 else:
     SECRET_KEY = os.environ['SECRET_KEY']
     LOCAL_HOST = os.environ['LOCAL_HOST']
+    REGISTER = os.environ['REGISTER']
+    PROFILE = os.environ['PROFILE']
+    PETS = os.environ['PETS']
+    PHOTOS = os.environ['PHOTOS']
+    USERS = os.environ['USERS']
+    LOGIN = os.environ['LOGIN']
 
 # from secrets import KEY, HOST
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,11 +39,11 @@ SECRET_KEY = SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://chidog.herokuapp.com']
+ALLOWED_HOSTS = ['https://chidog.herokuapp.com', LOCAL_HOST, REGISTER, PROFILE, PETS, PHOTOS, USERS, LOGIN]
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
-    LOCAL_HOST,
+    LOCAL_HOST, REGISTER, PROFILE, PETS, PHOTOS, USERS, LOGIN
 )
 
 
