@@ -48,13 +48,31 @@ class Authentication(View):
 
 class User_Detail(View):
 	def get(self, request):
-		usersPets = list(Pet.objects.all().values())
-		return JsonResponse({
+		if(request.user.is_authenticated):
+			usersPets = list(Pet.objects.all().values())
+			return JsonResponse({
+					'Content-Type': 'application/json',
+					'credentials': 'include',
+					'status': 200,
+					'data': usersPets,
+					}, safe=False)
+
+class Post_Detail(View):
+	def get(self, request):
+		if(request.user.is_authenticated):
+			posts = list(Post.objects.all().values())
+			return JsonResponse({
 				'Content-Type': 'application/json',
 				'credentials': 'include',
 				'status': 200,
-				'data': usersPets,
+				'data': posts,
 				}, safe=False)
-
+		else:
+			return JsonResponse({
+				'Content-Type': 'application/json',
+				'credentials': 'include',
+				'status': 200,
+				'message': 'Must be logged in.',
+				}, safe=False)
 
 
